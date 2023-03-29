@@ -15,7 +15,7 @@ def reader(img):
     
     return answer_json
 
-img = "./grade-process/test/images/minijjang.png"
+img = "./grade-processing/imageProcessing/test/images/minijjang.png"
 ans = reader(img)
 print(ans)
 

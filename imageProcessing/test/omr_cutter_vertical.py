@@ -46,8 +46,8 @@ def cutter1(img):
     size = size // num_cols
     result = [255-img_trim[:, i:i+size] for i in range(0, len(img_trim[0]), size)]
     for i in range(num_cols):
-        cv2.imwrite(f'./grade-process/test/picture/cut_image_{i}.png', result[i])
-    cv2.imwrite("./grade-process/test/picture/result.png", 255-img_trim)
+        cv2.imwrite(f'./grade-processing/imageProcessing/test/picture/cut_image_{i}.png', result[i])
+    cv2.imwrite("./grade-processing/imageProcessing/test/picture/result.png", 255-img_trim)
     cv2.imshow('image', img_trim)
     cv2.waitKey(0)
     
