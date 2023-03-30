@@ -18,8 +18,8 @@ def grader(img):
     boxes = []
     for cnt in sorted_contours:
         area = cv2.contourArea(cnt)
-        print(area)
-        if 200 > area > 100:
+        # print(area)
+        if 200 > area > 70:
             x, y, w, h = cv2.boundingRect(cnt)
             boxes.append((x, y, w, h))
 

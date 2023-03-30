@@ -15,9 +15,6 @@ def cutter1(img):
         thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     contours_xy = np.array(contours)
 
-    # cv2.imshow('img', thresh)
-    # cv2.waitKey(0)
-
     # x의 min과 max 찾기
     x_min, x_max = 0, 0
     value = list()
@@ -43,20 +40,15 @@ def cutter1(img):
     w = x_max-x_min
     h = y_max-y_min
     img_trim = thresh[y:y+h, x:x+w]
-# test/picture/cut_image_0.png
+    
     # 잘린 이미지 저장
     num_cols = 4  # 행의 갯수
     _, size = img_trim.shape
     size = size // num_cols
     result = [255-img_trim[:, i:i+size]
-              for i in range(0, len(img_trim[0]), size)]
+              for i in range(0, len(img_trim[0])-size%num_cols, size)]
     for i in range(num_cols):
         cv2.imwrite(f'test/picture/cut_image_{i}.png', result[i])
     cv2.imwrite("test/picture/result.png", 255-img_trim)
-    cv2.imshow('image', img_trim)
-    cv2.waitKey(0)
 
     return result
-
-
-cutter1(cv2.imread("test/images/mini33.png"))
